@@ -11,6 +11,12 @@ face_Cascade_File = cv2.CascadeClassifier('C:\\Users\\Vishal\\AppData\\Local\\Pr
 cam = cv2.VideoCapture(0)
 
 
+def track_pupil:
+    #zooming and  tracking pupil movement
+    pass
+            
+  
+
 while True:
     global a,b
     ret, img = cam.read()
