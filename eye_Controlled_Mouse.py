@@ -11,7 +11,7 @@ face_Cascade_File = cv2.CascadeClassifier('C:\\Users\\Vishal\\AppData\\Local\\Pr
 cam = cv2.VideoCapture(0)
 
 
-def track_pupil:
+def track_pupil():
     #zooming and  tracking pupil movement
     pass
             
@@ -34,8 +34,8 @@ while True:
         for (ex, ey, ew, eh) in eyes:  # eye width , height length parameters
             cv2.rectangle(roi_colour, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
             # print(len(eyes))
-            #print(ex+(ex+ew)/2)
-            a =int(float(ex)/8)
+            print(ex+(ex+ew)/2)
+            # a =int(float(ex)/8)
             b=int(float(ey)/8)
             if int(len(eyes)) == 0:
                 quit()
