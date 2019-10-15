@@ -35,7 +35,7 @@ while True:
             cv2.rectangle(roi_colour, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
             # print(len(eyes))
             print(ex+(ex+ew)/2)
-            # a =int(float(ex)/8)
+            a =int(float(ex)/8)
             b=int(float(ey)/8)
             if int(len(eyes)) == 0:
                 quit()
