@@ -1,12 +1,11 @@
 import cv2
 from pynput.mouse import Button,Controller
 
+import os
+
 mouse = Controller()
-eye_Cascade_File = cv2.CascadeClassifier('C:\\Users\\Vishal\\AppData\Local\\Programs\\Python\\Python36-32'
-                                    '\\opencv_python-3.3.0.10.dist-info\\data\\haarcascades\\haarcascade_eye.xml')
-face_Cascade_File = cv2.CascadeClassifier('C:\\Users\\Vishal\\AppData\\Local\\Programs'
-                                     '\\Python\\Python36-32\\opencv_python-3.3.0.10.dist-info'
-                                     '\\data\\haarcascades\\haarcascade_frontalface_default.xml')
+eye_Cascade_File = cv2.CascadeClassifier(os.path.dirname(cv2.__file__) + '/data/haarcascade_eye.xml')
+face_Cascade_File = cv2.CascadeClassifier(os.path.dirname(cv2.__file__) + '/data/haarcascade_frontalface_default.xml')
 
 cam = cv2.VideoCapture(0)
 
@@ -14,11 +13,11 @@ cam = cv2.VideoCapture(0)
 def track_pupil():
     #zooming and  tracking pupil movement
     pass
-            
-  
+
 
 while True:
     global a,b
+    a,b = 0,0
     ret, img = cam.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # convering to gray to recognize colour change effectively
     faces = face_Cascade_File.detectMultiScale(gray, 1.3, 5)  # geometry
@@ -39,11 +38,9 @@ while True:
             b=int(float(ey)/8)
             if int(len(eyes)) == 0:
                 quit()
-
     cv2.imshow('img', img)
     mouse.move(a,b)
     k = cv2.waitKey(30) & 0xff
-
 
     if (k == 27):
         break
